@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -45,6 +46,11 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    androidTestImplementation(libs.hilt.testing)
+    kspAndroidTest(libs.hilt.test.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

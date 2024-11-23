@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.vlahovtech.domain.model.PixabayImage
 import com.vlahovtech.loginregisterdemo.base.BaseFragment
 import com.vlahovtech.loginregisterdemo.databinding.FragmentHomeBinding
+import com.vlahovtech.loginregisterdemo.model.toAppPixabayImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -41,7 +43,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun navigateToImageDetails(image: PixabayImage) {
-        //TODO: findNavController().navigate()
+        val action = HomeFragmentDirections.actionHomeFragmentToImageDetailsFragment(pixabayImage = image.toAppPixabayImage())
+        findNavController().navigate(action)
     }
 
 }

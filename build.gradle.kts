@@ -7,3 +7,9 @@ plugins {
     alias(libs.plugins.android.hilt) apply false
     alias(libs.plugins.ksp) apply false
 }
+
+buildscript {
+    dependencies {
+        classpath(libs.navigation.safe.args)
+    }
+}

@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.retrofit.converter.scalars)
 
+    implementation(libs.paging)
+
     //OkHttp3
     implementation(libs.okhttp.core)
     implementation(libs.okhttp.interceptor)

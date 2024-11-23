@@ -10,7 +10,5 @@ interface HomeContract {
         @StringRes val passwordError: Int? = null,
     ): BaseViewState
 
-    sealed interface Effect : BaseEffect {
-        data object NavigateToHome: Effect
-    }
+    sealed interface Effect : BaseEffect
 }

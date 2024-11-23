@@ -12,4 +12,6 @@
     <string name="wrong_email_password_combination">Wrong email/password combination</string>
     <string name="age_validation">Age must be between 18 and 99 years old!</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="welcome">Welcome</string>
+    <string name="images">Images</string>
 </resources>

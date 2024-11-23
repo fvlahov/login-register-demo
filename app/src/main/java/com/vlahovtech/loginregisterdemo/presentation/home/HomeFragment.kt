@@ -4,17 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.vlahovtech.loginregisterdemo.R
+import com.vlahovtech.domain.model.PixabayImage
 import com.vlahovtech.loginregisterdemo.base.BaseFragment
 import com.vlahovtech.loginregisterdemo.databinding.FragmentHomeBinding
-import com.vlahovtech.loginregisterdemo.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel: HomeViewModel by viewModels()
+
+    private val pixabayImageAdapter = PixabayImageAdapter(onImageClicked = ::navigateToImageDetails)
 
     override fun provideBinding(
         inflater: LayoutInflater,
@@ -28,30 +30,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.lifecycleOwner = this
 
         binding.apply {
-            buttonRegister.setOnClickListener { navigateToRegister() }
-            buttonLogin.setOnClickListener {
-                viewModel.onLoginClicked(
-                    email = binding.inputEmail.text?.toString().orEmpty(),
-                    password = binding.inputPassword.text?.toString().orEmpty()
-                )
-            }
+            recyclerImages.adapter = pixabayImageAdapter
         }
 
         lifecycleScope.launch {
-            viewModel.effect.collectLatest { effect ->
-                when(effect) {
-                    HomeContract.Effect.NavigateToHome -> navigateToHome()
-                }
+            viewModel.imagesPagingDataFlow.collectLatest { images ->
+                pixabayImageAdapter.submitData(images)
             }
         }
     }
 
-
-    private fun navigateToRegister() {
-        findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-    }
-
-    private fun navigateToHome() {
+    private fun navigateToImageDetails(image: PixabayImage) {
         //TODO: findNavController().navigate()
     }
 

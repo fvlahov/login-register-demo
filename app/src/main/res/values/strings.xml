@@ -10,4 +10,6 @@
     <string name="password_length_validation">Password must be between 6 and 12 characters long</string>
     <string name="age">Age</string>
     <string name="wrong_email_password_combination">Wrong email/password combination</string>
+    <string name="age_validation">Age must be between 18 and 99 years old!</string>
+    <string name="unknown_error">Unknown error</string>
 </resources>

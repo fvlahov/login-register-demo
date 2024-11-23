@@ -1,20 +1,20 @@
 package com.vlahovtech.loginregisterdemo.presentation.login
 
-import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.vlahovtech.domain.use_case.EmailValidationUseCase
 import com.vlahovtech.domain.use_case.LoginUseCase
 import com.vlahovtech.loginregisterdemo.R
 import com.vlahovtech.loginregisterdemo.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
-import java.util.regex.Matcher
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
+    private val emailValidationUseCase: EmailValidationUseCase,
 ) : BaseViewModel() {
 
     private val mutableViewState = MutableLiveData<LoginContract.State>()
@@ -44,7 +44,7 @@ class LoginViewModel @Inject constructor(
     private fun isFormValid(email: String, password: String): Boolean {
         val emailError = when {
             email.isBlank() -> R.string.required
-            Patterns.EMAIL_ADDRESS.matcher(email).matches().not() -> R.string.email_wrong_format
+            emailValidationUseCase.isValid(email).not() -> R.string.email_wrong_format
             else -> null
         }
 

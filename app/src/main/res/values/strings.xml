@@ -14,4 +14,10 @@
     <string name="unknown_error">Unknown error</string>
     <string name="welcome">Welcome</string>
     <string name="images">Images</string>
+    <string name="created_by_label">Created by:</string>
+    <string name="views_label">Views:</string>
+    <string name="likes_label">Likes:</string>
+    <string name="comments_label">Comments:</string>
+    <string name="favorites_label">Favorite count:</string>
+    <string name="downloads_label">Downloads:</string>
 </resources>

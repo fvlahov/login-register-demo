@@ -19,8 +19,10 @@ fun ApiImage.toPixabayImage() = PixabayImage(
     imageWidth = imageWidth,
     imageHeight = imageHeight,
     views = views,
+    favorites = favorites,
     downloads = downloads,
     likes = likes,
     comments = comments,
-    user = user
+    user = user,
+    type = type
 )

@@ -11,5 +11,7 @@ data class PixabayImage(
     val downloads: Int,
     val likes: Int,
     val comments: Int,
+    val favorites: Int,
     val user: String,
+    val type: String,
 )

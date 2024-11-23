@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.vlahovtech.loginregisterdemo.presentation.image_details.ImageDetailsViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="?attr/homeAsUpIndicator" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:glide="@{viewmodel.viewState.pixabayImage.imageUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <TextView
+                android:id="@+id/labelImageSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.imageSize}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                tools:text="1024 x 2024" />
+
+            <TextView
+                android:id="@+id/labelImageType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.type}"
+                app:layout_constraintBottom_toBottomOf="@id/labelImageSize"
+                app:layout_constraintStart_toEndOf="@id/labelImageSize"
+                app:layout_constraintTop_toTopOf="@id/labelImageSize"
+                tools:text="A type" />
+
+            <TextView
+                android:id="@+id/labelImageTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.tags}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelImageSize"
+                tools:text="Smthng, AI, something else" />
+
+            <!--Section 2-->
+            <TextView
+                android:id="@+id/labelCreatedBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:text="@string/created_by_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelImageTags" />
+
+            <TextView
+                android:id="@+id/textUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.user}"
+                app:layout_constraintBottom_toBottomOf="@id/labelCreatedBy"
+                app:layout_constraintStart_toEndOf="@id/labelCreatedBy"
+                app:layout_constraintTop_toTopOf="@id/labelCreatedBy"
+                tools:text="User123" />
+
+            <TextView
+                android:id="@+id/labelViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/views_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelCreatedBy"
+                app:layout_constraintTop_toBottomOf="@id/textUser" />
+
+            <TextView
+                android:id="@+id/textViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.views}"
+                app:layout_constraintBottom_toBottomOf="@id/labelViews"
+                app:layout_constraintStart_toEndOf="@id/labelViews"
+                app:layout_constraintTop_toTopOf="@id/labelViews"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/labelLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/likes_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelCreatedBy"
+                app:layout_constraintTop_toBottomOf="@id/textViews" />
+
+            <TextView
+                android:id="@+id/textLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.likes}"
+                app:layout_constraintBottom_toBottomOf="@id/labelLikes"
+                app:layout_constraintStart_toEndOf="@id/labelLikes"
+                app:layout_constraintTop_toTopOf="@id/labelLikes"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/labelComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/comments_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelCreatedBy"
+                app:layout_constraintTop_toBottomOf="@id/textLikes" />
+
+            <TextView
+                android:id="@+id/textComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.comments}"
+                app:layout_constraintBottom_toBottomOf="@id/labelComments"
+                app:layout_constraintStart_toEndOf="@id/labelComments"
+                app:layout_constraintTop_toTopOf="@id/labelComments"
+                tools:text="152" />
+
+            <TextView
+                android:id="@+id/labelFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/favorites_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelCreatedBy"
+                app:layout_constraintTop_toBottomOf="@id/textComments" />
+
+            <TextView
+                android:id="@+id/textFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.favorites}"
+                app:layout_constraintBottom_toBottomOf="@id/labelFavorites"
+                app:layout_constraintStart_toEndOf="@id/labelFavorites"
+                app:layout_constraintTop_toTopOf="@id/labelFavorites"
+                tools:text="152" />
+
+            <TextView
+                android:id="@+id/labelDownloads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/downloads_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelCreatedBy"
+                app:layout_constraintTop_toBottomOf="@id/textFavorites" />
+
+            <TextView
+                android:id="@+id/textDownloads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewmodel.viewState.pixabayImage.downloads}"
+                app:layout_constraintBottom_toBottomOf="@id/labelDownloads"
+                app:layout_constraintStart_toEndOf="@id/labelDownloads"
+                app:layout_constraintTop_toTopOf="@id/labelDownloads"
+                tools:text="1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

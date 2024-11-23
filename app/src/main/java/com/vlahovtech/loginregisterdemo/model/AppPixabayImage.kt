@@ -12,12 +12,17 @@ data class AppPixabayImage(
     val imageUrl: String?,
     val imageWidth: Int,
     val imageHeight: Int,
-    val views: Int,
-    val downloads: Int,
-    val likes: Int,
-    val comments: Int,
+    val views: String,
+    val downloads: String,
+    val likes: String,
+    val comments: String,
+    val favorites: String,
     val user: String,
-): Parcelable
+    val type: String,
+) : Parcelable {
+    val imageSize: String
+        get() = "$imageWidth x $imageHeight"
+}
 
 fun PixabayImage.toAppPixabayImage() = AppPixabayImage(
     id = id,
@@ -26,9 +31,11 @@ fun PixabayImage.toAppPixabayImage() = AppPixabayImage(
     imageUrl = imageUrl,
     imageWidth = imageWidth,
     imageHeight = imageHeight,
-    views = views,
-    downloads = downloads,
-    likes = likes,
-    comments = comments,
-    user = user
+    views = views.toString(),
+    downloads = downloads.toString(),
+    likes = likes.toString(),
+    comments = comments.toString(),
+    favorites = favorites.toString(),
+    user = user,
+    type = type
 )

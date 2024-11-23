@@ -42,6 +42,18 @@ dependencies {
     androidTestImplementation(libs.hilt.testing)
     kspAndroidTest(libs.hilt.test.compiler)
 
+    //Retrofit
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.converter.scalars)
+
+    //OkHttp3
+    implementation(libs.okhttp.core)
+    implementation(libs.okhttp.interceptor)
+
+    //Gson
+    implementation(libs.gson)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

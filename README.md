@@ -4,6 +4,10 @@
 - Make sure you have JDK version of atleast 17 and set your Android Studio JDK version through **Settings -> Build, Execution Deployment -> Build Tools -> Gradle -> Gradle JDK**
 - Set **Build Variant** to debug (did not test in release)
 - Build and start on emulator/physical device
+- Mock email and password used for Login
+  - Email: test@test.com
+  - Password: 123456
+- Registration will always succeed (after validation)
 
 ## Architecture
 - Hilt for DI

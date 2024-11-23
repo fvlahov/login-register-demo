@@ -16,8 +16,8 @@
 
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:popUpToInclusive="@id/loginFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="@id/loginFragment" />
     </fragment>
 
     <fragment
@@ -27,13 +27,33 @@
         tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_homeFragment"
-            app:popUpToInclusive="@id/loginFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="@id/loginFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.vlahovtech.loginregisterdemo.presentation.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_imageDetailsFragment"
+            app:destination="@id/imageDetailsFragment">
+            <argument
+                android:name="pixabayImage"
+                app:argType="com.vlahovtech.loginregisterdemo.model.AppPixabayImage"
+                app:nullable="false" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageDetailsFragment"
+        android:name="com.vlahovtech.loginregisterdemo.presentation.image_details.ImageDetailsFragment"
+        android:label="ImageDetailsFragment"
+        tools:layout="@layout/fragment_image_details">
+        <argument
+            android:name="pixabayImage"
+            app:argType="com.vlahovtech.loginregisterdemo.model.AppPixabayImage"
+            app:nullable="false" />
+    </fragment>
 </navigation>

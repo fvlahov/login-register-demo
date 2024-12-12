@@ -2,8 +2,10 @@ package com.vlahovtech.data.di
 
 import com.vlahovtech.data.repository.ImageRepositoryImpl
 import com.vlahovtech.data.repository.MockAuthRepositoryImpl
+import com.vlahovtech.data.repository.PreferencesRepositoryImpl
 import com.vlahovtech.domain.repository.AuthRepository
 import com.vlahovtech.domain.repository.ImageRepository
+import com.vlahovtech.domain.repository.PreferencesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +20,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun imageRepository(impl: ImageRepositoryImpl): ImageRepository
+
+    @Binds
+    abstract fun preferencesRepository(impl: PreferencesRepositoryImpl): PreferencesRepository
 }

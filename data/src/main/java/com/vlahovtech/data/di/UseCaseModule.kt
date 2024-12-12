@@ -1,9 +1,11 @@
 package com.vlahovtech.data.di
 
+import com.vlahovtech.data.use_case.AuthTokenUseCaseImpl
 import com.vlahovtech.data.use_case.EmailValidationUseCaseImpl
 import com.vlahovtech.data.use_case.ImageUseCaseImpl
 import com.vlahovtech.data.use_case.LoginUseCaseImpl
 import com.vlahovtech.data.use_case.RegisterUseCaseImpl
+import com.vlahovtech.domain.use_case.AuthTokenUseCase
 import com.vlahovtech.domain.use_case.EmailValidationUseCase
 import com.vlahovtech.domain.use_case.ImageUseCase
 import com.vlahovtech.domain.use_case.LoginUseCase
@@ -28,4 +30,7 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun imageUseCase(impl: ImageUseCaseImpl): ImageUseCase
+
+    @Binds
+    abstract fun authTokenUseCase(impl: AuthTokenUseCaseImpl): AuthTokenUseCase
 }
